@@ -1,0 +1,36 @@
+# Comparación de menciones de políticos mujeres y hombres
+
+
+Instalar librerías
+
+```{r}
+library(rtweet)
+
+```
+Hacer función para extraer data
+
+```{r}
+getTweets<-function(user){
+  tweets <- search_tweets(q=user,
+                          n=1000,
+                          type = "popular",
+                          include_rts = FALSE,
+                          `-filter`="replies",
+                          lang="es"
+                          )
+  path <- paste(p,".csv", sep="")
+  write_as_csv(tweets, path)
+  
+}
+```
+
+Ejecución para obtener información
+
+```{r}
+politicos <- c("@alferdez","@cfkArgentina","@OfeFernandez_","@mauriciomacri","@SergioBerniArg","@elisacarrio","@mariuvidal","@horaciorlarreta")
+
+for(p in politicos){
+  tweet_p <- getTweets(p)
+}
+```
+
